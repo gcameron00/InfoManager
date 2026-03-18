@@ -130,14 +130,30 @@ PersonalConnection
 
 ## Data Model
 
-Minimal relational schema:
+Relational schema:
 
 ```
 ObjectType        { id, name }
+
 Object            { id, object_type_id, field_values }
+
 RelationshipType  { id, name, source_object_type_id, target_object_type_id, inverse_label, config }
+
 Relationship      { id, relationship_type_id, source_object_id, target_object_id, field_values }
+
+FieldDefinition   { id, parent_type, parent_type_id, name, data_type, required, display_order }
 ```
+
+`FieldDefinition` provides the schema behind `field_values` on both `Object` and `Relationship`:
+
+- `parent_type` — `'object_type'` or `'relationship_type'`
+- `parent_type_id` — FK to the corresponding type table
+- `name` — field name, e.g. `job_title`
+- `data_type` — e.g. `string`, `date`, `phone`, `url`
+- `required` — whether the field must be populated
+- `display_order` — controls field ordering in the UI
+
+This allows `field_values` to remain a flexible JSON blob while still having a known, enumerable schema per type — enabling form generation, validation on save, and consistent field naming.
 
 ---
 
