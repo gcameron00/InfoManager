@@ -1,15 +1,26 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Home</title>
+    <title>InfoManager 2.0</title>
     <link rel="stylesheet" href="/assets/css/styles.css">
-    <script defer src="/assets/js/main.js"></script>
   </head>
   <body>
-    <h1>It works 🎉</h1>
-    <p>This site is deployed using Cloudflare Pages.</p>
-    <p><a href="/about/">About</a></p>
+    <div id="app">
+      <aside id="sidebar">
+        <div id="sidebar-header">
+          <h1>InfoManager</h1>
+          <div id="type-filters"></div>
+        </div>
+        <div id="object-list"></div>
+      </aside>
+      <main id="main">
+        <div id="detail-view">
+          <p class="empty-state">Select an object to view details.</p>
+        </div>
+      </main>
+    </div>
+    <script src="/assets/js/main.js"></script>
   </body>
 </html>
